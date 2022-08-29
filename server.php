@@ -1,4 +1,23 @@
 <html>
+    <?php 
+
+        function boolToString($bool){
+            return $bool ? 'true' : 'false';
+        }
+        function isInRectangle($x, $y, $r){
+            return -$r/2 <= $x && $x <= 0 && -$r <= $y && $y <= 0;
+        }
+        function isInTriangle($x, $y, $r){
+            return $x >= 0 && $y >= 0 && $x/2 + $y - $r/2 <= 0;
+        }
+        function isInQuaterCircle($x, $y, $r){
+            return $x <= 0 && $y >= 0 && $x * $x + $y * $y <= $r*$r;
+        }
+        function isInArea($x, $y, $r){
+            return boolToString(isInRectangle($x, $y, $r) || isInTriangle($x, $y, $r) || isInQuaterCircle($x, $y, $r));
+        }
+
+    ?>
     <head>
         <meta charset="utf-8">
         <title>Result table</title>
@@ -24,7 +43,7 @@
                 echo sprintf($format, $requests['x']);
                 echo sprintf($format, $requests['y']);
                 echo sprintf($format, $requests['radius']);
-                echo sprintf($format, 'false');
+                echo sprintf($format, isInArea(floatval($requests['x']), floatval($requests['y']), floatval($requests['radius'])));
                 echo '</tr>';
             } ?>
         </table>
