@@ -4,11 +4,95 @@
         <meta charset="utf-8">
         <title>First lab</title>
         <style>
+            table {
+                width: 100%;
+                height: 100vh;
+                font-size: 20px;
+            }
+            
+            .header td {
+                text-align: center;
+                vertical-align: top;
+                padding-top: 20px;
+                font-size: 30px;
+                color: yellow;
+                background-color: black;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
 
+            .header {
+                width: 100%;
+                height: 15%;
+            }
+
+            .content {
+                width: 100%;
+                height: 50%;
+            }
+
+            .input-el {
+                width: 100%;
+                height: 7%;
+            }
+
+            .footer {
+                height: 14%;
+            }
+
+            .input-el td, .content td {
+                padding-left: 20%;
+                padding-right: 20%;
+            }
+
+            .x button {
+                border-radius: 50%;
+                padding: 10px;
+                width: 40px;
+                border-style: solid;
+                border-color: black;
+                font-size: 15px;
+            }
+        
         </style>
     </head>
     <body>
-
+        <table>
+            <tr class="header">
+                <td colspan="2"><p>Кортыш Андрей Олегович</p> <p>группа P.....</p> <p>Вариант 1908</p></td>
+            </tr>
+            <tr class="content">
+                <td>GRAPHICS</td>
+            </tr>
+            <tr class="input-el x">
+                <td>
+                    <span>Alter X: </span>
+                    <button type="submit" form="data">-4</button>
+                    <button type="submit" form="data">-3</button>
+                    <button type="submit" form="data">-2</button>
+                    <button type="submit" form="data">-1</button>
+                    <button type="submit" form="data">0</button>
+                    <button type="submit" form="data">1</button>
+                    <button type="submit" form="data">2</button>
+                    <button type="submit" form="data">3</button>
+                    <button type="submit" form="data">4</button>
+                </td>
+            </tr>
+            <tr class="input-el y">
+                <td><span>Alter Y: </span><input type="text" placeholder="Input any number from -3 to 3" form="data"></td>
+            </tr>
+            <tr class="input-el r">
+                <td>
+                    <span>Alter R: </span>
+                    <input type="radio" name="radius" id="r1" form="data"><label for="r1">1</label>
+                    <input type="radio" name="radius" id="r2" form="data"><label for="r2">1.5</label>
+                    <input type="radio" name="radius" id="r3" form="data"><label for="r3">2</label>
+                    <input type="radio" name="radius" id="r4" form="data"><label for="r4">2.5</label>
+                    <input type="radio" name="radius" id="r5" form="data"><label for="r5">3</label>
+                </td>
+            </tr>
+            <tr class="footer"></tr>
+        </table>
+        <form id="data" method="get" action=""></form>
     </body>
     <script src="script.js"></script>
 </html>
