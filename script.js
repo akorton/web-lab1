@@ -7,10 +7,14 @@ canvas.height = height;
 const maxCoord = 4;
 const offsetX = 50;
 const offsetY = 30;
+const pointSize = 5;
 const steps = {'x': (width - offsetX) / (2*maxCoord), 'y': (height - offsetY) / (2*maxCoord)};
 const origin = {'x': offsetX / 2 + maxCoord * steps['x'], 'y': offsetY / 2 + maxCoord * steps['y']};
 const radiusButtons = document.getElementsByName('radius');
 const yButton = document.getElementById('y');
+let x = 0;
+let y = 0;
+let r = 1;
 
 let setUp = ()=>{
     ctx.moveTo(origin.x - steps.x * 4, origin.y);
@@ -48,8 +52,20 @@ let drawQuaterCircle = (r)=>{
     ctx.fill();
 }
 
+let drawPoint = (x, y)=>{
+    draw(r);
+    ctx.fillStyle = '#FF0000';
+    ctx.beginPath();
+    ctx.arc(origin.x + x*steps.x, origin.y + y*steps.y, pointSize, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+}
+
 radiusButtons.forEach((btn)=>{
-    btn.addEventListener('click', (e)=>(draw(btn.value)));
+    btn.addEventListener('click', (e)=>{
+        r = btn.value;
+        drawPoint(x, y);
+    })
 });
 
 yButton.addEventListener('input', (e)=>{
@@ -60,6 +76,9 @@ yButton.addEventListener('input', (e)=>{
     else if (integerValue > 3 || integerValue < -3){
         yButton.value = yButton.value.substring(0, yButton.value.length - 1);
     }
+    if (yButton.value != '-') {
+        y = +yButton.value;
+        drawPoint(x, y);
+    }
 });
-setUp();
-draw(1);
+drawPoint(x, y);
