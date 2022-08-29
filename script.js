@@ -12,6 +12,7 @@ const steps = {'x': (width - offsetX) / (2*maxCoord), 'y': (height - offsetY) / 
 const origin = {'x': offsetX / 2 + maxCoord * steps['x'], 'y': offsetY / 2 + maxCoord * steps['y']};
 const radiusButtons = document.getElementsByName('radius');
 const yButton = document.getElementById('y');
+const xButtons = document.getElementsByTagName('button');
 let x = 0;
 let y = 0;
 let r = 1;
@@ -56,7 +57,7 @@ let drawPoint = (x, y)=>{
     draw(r);
     ctx.fillStyle = '#FF0000';
     ctx.beginPath();
-    ctx.arc(origin.x + x*steps.x, origin.y + y*steps.y, pointSize, 0, Math.PI * 2);
+    ctx.arc(origin.x + x*steps.x, origin.y - y*steps.y, pointSize, 0, Math.PI * 2);
     ctx.fill();
     ctx.beginPath();
 }
@@ -65,7 +66,7 @@ radiusButtons.forEach((btn)=>{
     btn.addEventListener('click', (e)=>{
         r = btn.value;
         drawPoint(x, y);
-    })
+    });
 });
 
 yButton.addEventListener('input', (e)=>{
@@ -81,4 +82,12 @@ yButton.addEventListener('input', (e)=>{
         drawPoint(x, y);
     }
 });
+
+for (let btn of xButtons){
+    btn.addEventListener('click', (e)=>{
+        x = +btn.value;
+        drawPoint(x, y);
+    })
+}
+
 drawPoint(x, y);
