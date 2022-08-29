@@ -82,19 +82,19 @@
             <tr class="input-el x">
                 <td>
                     <span>Изменение X: </span>
-                    <button type="submit" form="data" value="-4">-4</button>
-                    <button type="submit" form="data" value="-3">-3</button>
-                    <button type="submit" form="data" value="-2">-2</button>
-                    <button type="submit" form="data" value="-1">-1</button>
-                    <button type="submit" form="data" value="0">0</button>
-                    <button type="submit" form="data" value="1">1</button>
-                    <button type="submit" form="data" value="2">2</button>
-                    <button type="submit" form="data" value="3">3</button>
-                    <button type="submit" form="data" value="4">4</button>
+                    <button type="submit" form="data" value="-4" name="x">-4</button>
+                    <button type="submit" form="data" value="-3" name="x">-3</button>
+                    <button type="submit" form="data" value="-2" name="x">-2</button>
+                    <button type="submit" form="data" value="-1" name="x">-1</button>
+                    <button type="submit" form="data" value="0" name="x">0</button>
+                    <button type="submit" form="data" value="1" name="x">1</button>
+                    <button type="submit" form="data" value="2" name="x">2</button>
+                    <button type="submit" form="data" value="3" name="x">3</button>
+                    <button type="submit" form="data" value="4" name="x">4</button>
                 </td>
             </tr>
             <tr class="input-el">
-                <td><span>Изменение Y: </span><input type="text" placeholder="Input any number from -3 to 3" form="data" id="y"></td>
+                <td><span>Изменение Y: </span><input type="text" form="data" id="y" name="y" value="0"></td>
             </tr>
             <tr class="input-el">
                 <td>
@@ -108,7 +108,7 @@
             </tr>
             <tr class="footer"></tr>
         </table>
-        
+        <form id="data" method="get" action="server.php" target="_blank"></form>
     </body>
 </html>
 <script src="script.js"></script>
