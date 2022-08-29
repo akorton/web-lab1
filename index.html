@@ -52,6 +52,9 @@
                 padding-left: 20%;
                 padding-right: 20%;
             }
+            .content td{
+                text-align: center;
+            }
 
             .x button {
                 border-radius: 50%;
@@ -62,8 +65,8 @@
                 font-size: 15px;
             }
             .content #canvas {
-                width: 100%;
-                height: 100%;
+                width: 500px;
+                height: 500px;
             }
         
         </style>
@@ -96,16 +99,16 @@
             <tr class="input-el r">
                 <td>
                     <span>Изменение R: </span>
-                    <input type="radio" name="radius" id="r1" form="data"><label for="r1">1</label>
-                    <input type="radio" name="radius" id="r2" form="data"><label for="r2">1.5</label>
-                    <input type="radio" name="radius" id="r3" form="data"><label for="r3">2</label>
-                    <input type="radio" name="radius" id="r4" form="data"><label for="r4">2.5</label>
-                    <input type="radio" name="radius" id="r5" form="data"><label for="r5">3</label>
+                    <input type="radio" name="radius" id="r1" form="data" value="1"><label for="r1">1</label>
+                    <input type="radio" name="radius" id="r2" form="data" value="1.5"><label for="r2">1.5</label>
+                    <input type="radio" name="radius" id="r3" form="data" value="2"><label for="r3">2</label>
+                    <input type="radio" name="radius" id="r4" form="data" value="2.5"><label for="r4">2.5</label>
+                    <input type="radio" name="radius" id="r5" form="data" value="3"><label for="r5">3</label>
                 </td>
             </tr>
             <tr class="footer"></tr>
         </table>
         <form id="data" method="get" action=""></form>
     </body>
-    <script src="script.js"></script>
 </html>
+<script src="script.js"></script>
