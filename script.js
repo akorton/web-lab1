@@ -48,7 +48,6 @@ let drawQuaterCircle = (r)=>{
     ctx.fill();
 }
 
-setUp();
 radiusButtons.forEach((btn)=>{
     btn.addEventListener('click', (e)=>(draw(btn.value)));
 });
@@ -62,3 +61,5 @@ yButton.addEventListener('input', (e)=>{
         yButton.value = yButton.value.substring(0, yButton.value.length - 1);
     }
 });
+setUp();
+draw(1);
