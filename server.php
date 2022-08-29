@@ -24,6 +24,7 @@
     </head>
     <body>
         <?php 
+            $start_time = date_create();
             session_start();
             if (count($_GET) != 0) $_SESSION[$_COOKIE['PHPSESSID']][] = $_GET;
             if ($_POST['reset'] != NULL) $_SESSION[$_COOKIE['PHPSESSID']] = [];
@@ -47,6 +48,17 @@
                 echo sprintf($format, isInArea(floatval($requests['x']), floatval($requests['y']), floatval($requests['radius'])));
                 echo '</tr>';
             } ?>
+            <tr>
+                <td colspan="2">Current time</td>
+                <td colspan="2">Script work time</td>
+            </tr>
+            <tr>
+                <td colspan="2"><?php echo date('d-m-y h:i:s')?></td>
+                <td colspan="2"><?php 
+                $end_time = date_create();
+                echo date_diff($end_time, $start_time)->format('%s seconds %f microseconds');
+                ?></td>
+            </tr>
         </table>
     </body>
 </html>
