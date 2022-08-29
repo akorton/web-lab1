@@ -25,7 +25,8 @@
     <body>
         <?php 
             session_start();
-            $_SESSION['mySession'][] = $_GET;
+            if (count($_GET) != 0) $_SESSION[$_COOKIE['PHPSESSID']][] = $_GET;
+            if ($_POST['reset'] != NULL) $_SESSION[$_COOKIE['PHPSESSID']] = [];
         ?>
         <table align="center" cellpadding="5" cellspacing="10" border="2" width="100%">
             <tr>
@@ -37,7 +38,7 @@
                 <td>R</td>
                 <td>Is in</td>
             </tr>
-            <?php  foreach ($_SESSION['mySession'] as $requests){
+            <?php  foreach ($_SESSION[$_COOKIE['PHPSESSID']] as $requests){
                 $format = '<td>%s</td>';
                 echo '<tr>';
                 echo sprintf($format, $requests['x']);

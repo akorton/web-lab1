@@ -48,7 +48,7 @@
                 height: 14%;
             }
 
-            .input-el td, .content td {
+            .input-el td, .content td, td#reset {
                 padding-left: 20%;
                 padding-right: 20%;
             }
@@ -105,6 +105,9 @@
                     <input type="radio" name="radius" id="r4" form="data" value="2.5"><label for="r4">2.5</label>
                     <input type="radio" name="radius" id="r5" form="data" value="3"><label for="r5">3</label>
                 </td>
+            </tr>
+            <tr>
+                <td id="reset"><form method="post" action="server.php" target="_blank"><button type="submit" name="reset" value="reset">Reset</button></form></td>
             </tr>
             <tr class="footer"></tr>
         </table>
