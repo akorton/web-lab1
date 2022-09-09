@@ -1,6 +1,5 @@
 <html>
     <?php 
-
         function boolToString($bool){
             return $bool ? 'true' : 'false';
         }
@@ -13,15 +12,22 @@
         function isInQuaterCircle($x, $y, $r){
             return $x <= 0 && $y >= 0 && $x * $x + $y * $y <= $r*$r;
         }
+        function getAlert($x, $y, $r){
+            if (strlen($x) > 10 || strlen($y) > 10 || strlen($r) > 10){
+                return true;
+            }
+            return false;
+        }
         function validate($x, $y, $r){
             if ($x == NULL || $y == NULL || $r == NULL) return false;
+            
             $float_x = floatval($x);
             $float_y = floatval($y);
             $float_r = floatval($r);
             if (strval($float_r) != $r || strval($float_y) != $y || strval($float_x) != $x) return false;
             $correct_x = array(-4, -3, -2, -1, 0, 1, 2, 3, 4);
             if (!in_array($float_x, $correct_x)) return false;
-            if (!($float_y <= 3 && $float_y >= -1)) return false;
+            if (!($float_y <= 3 && $float_y >= -3)) return false;
             $correct_r = array(1, 1.5, 2, 2.5, 3);
             if (!in_array($float_r, $correct_r)) return false;
             return true;
@@ -52,8 +58,9 @@
                 <td>R</td>
                 <td>Is in</td>
             </tr>
-            <?php  foreach ($_SESSION[$_COOKIE['PHPSESSID']] as $requests){
+            <?php  $alert = false; foreach ($_SESSION[$_COOKIE['PHPSESSID']] as $requests){
                 if (validate($requests['x'], $requests['y'], $requests['radius'])){
+                    $alert = $alert | getAlert($requests['x'], $requests['y'], $requests['radius']);
                     $format = '<td>%s</td>';
                     echo '<tr>';
                     echo sprintf($format, floatval($requests['x']));
@@ -62,7 +69,8 @@
                     echo sprintf($format, isInArea(floatval($requests['x']), floatval($requests['y']), floatval($requests['radius'])));
                     echo '</tr>';
                 }
-            } ?>
+               
+            }  if ($alert)  echo '<script>alert(\'Careful too many digits in request params!\')</script>';?>
             <tr>
                 <td colspan="2">Current time</td>
                 <td colspan="2">Script work time</td>
@@ -83,5 +91,5 @@
         let newArray = [...hrefArray.splice(0, hrefArray.length - 1), 'index.html'];
         window.location.href = newArray.join("/");
     }
-
+    
 </script>
