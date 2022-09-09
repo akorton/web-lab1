@@ -56,9 +56,9 @@
                 if (validate($requests['x'], $requests['y'], $requests['radius'])){
                     $format = '<td>%s</td>';
                     echo '<tr>';
-                    echo sprintf($format, $requests['x']);
-                    echo sprintf($format, $requests['y']);
-                    echo sprintf($format, $requests['radius']);
+                    echo sprintf($format, floatval($requests['x']));
+                    echo sprintf($format, floatval($requests['y']));
+                    echo sprintf($format, floatval($requests['radius']));
                     echo sprintf($format, isInArea(floatval($requests['x']), floatval($requests['y']), floatval($requests['radius'])));
                     echo '</tr>';
                 }
