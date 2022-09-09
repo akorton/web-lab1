@@ -12,8 +12,14 @@ const steps = {'x': (width - offsetX) / (2*maxCoord), 'y': (height - offsetY) / 
 const origin = {'x': offsetX / 2 + maxCoord * steps['x'], 'y': offsetY / 2 + maxCoord * steps['y']};
 const radiusButtons = document.getElementsByName('radius');
 const yButton = document.getElementById('y');
-const xButtons = document.getElementById('x_buttons').getElementsByTagName('button');
+const xButtons = document.getElementById('x_buttons').getElementsByTagName('input');
+const formData = document.getElementById('data');
 let x = 0;
+const hiddenXinput =document.createElement('input');
+hiddenXinput.type = 'hidden';
+hiddenXinput.name = 'x';
+hiddenXinput.value = x;
+formData.appendChild(hiddenXinput);
 let y = 0;
 let r = 1;
 
@@ -87,6 +93,7 @@ for (let btn of xButtons){
     btn.addEventListener('click', (e)=>{
         x = +btn.value;
         drawPoint(x, y);
+        hiddenXinput.value = x;
     })
 }
 
